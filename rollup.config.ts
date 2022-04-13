@@ -1,11 +1,11 @@
-import { RollupOptions } from 'rollup'
 import babel from '@rollup/plugin-babel'
-import { terser } from 'rollup-plugin-terser'
-import size from 'rollup-plugin-size'
-import visualizer from 'rollup-plugin-visualizer'
-import replace from '@rollup/plugin-replace'
 import nodeResolve from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
 import path from 'path'
+import { RollupOptions } from 'rollup'
+import size from 'rollup-plugin-size'
+import { terser } from 'rollup-plugin-terser'
+import visualizer from 'rollup-plugin-visualizer'
 
 type Options = {
   input: string
@@ -21,6 +21,7 @@ const globals = {
   'react-dom': 'ReactDOM',
   '@tanstack/table-core': 'TableCore',
   '@tanstack/react-table': 'ReactTable',
+  '@tanstack/vue-table': 'VueTable',
   '@tanstack/react-table-devtools': 'ReactTableDevtools',
 }
 
@@ -53,6 +54,13 @@ export default function rollup(options: RollupOptions): RollupOptions[] {
       packageDir: 'packages/react-table',
       jsName: 'ReactTable',
       outputFile: 'react-table',
+      entryFile: 'src/index.tsx',
+    }),
+    ...buildConfigs({
+      name: 'vue-table',
+      packageDir: 'packages/vue-table',
+      jsName: 'VueTable',
+      outputFile: 'vue-table',
       entryFile: 'src/index.tsx',
     }),
     ...buildConfigs({

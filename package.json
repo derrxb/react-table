@@ -2,7 +2,7 @@
   "private": true,
   "repository": "https://github.com/tanstack/react-table.git",
   "scripts": {
-    "linkAll": "lerna exec 'yarn link' && lerna exec 'yarn link @tanstack/react-table'",
+    "linkAll": "lerna exec 'yarn link' && lerna exec 'yarn link @tanstack/react-table' && lerna exec 'yarn link @tanstack/vue-table'",
     "unlinkAll": "lerna exec yarn unlink",
     "test": "(is-ci && yarn test:ci) || yarn test:dev",
     "test:ci": "jest",
@@ -18,6 +18,7 @@
   "workspaces": [
     "./packages/table-core",
     "./packages/react-table",
+    "./packages/vue-table",
     "./packages/react-table-devtools"
   ],
   "devDependencies": {
@@ -51,6 +52,7 @@
     "rollup-plugin-visualizer": "^5.5.4",
     "stream-to-array": "^2.3.0",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "vue": "^3.2.32"
   }
 }
